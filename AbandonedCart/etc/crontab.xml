@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="visionet_cron">
+        <job name="visionet_abandoned_cart" instance="Visionet\AbandonedCart\Model\Cron" method="abandonedCarts">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+
+    <group id="visionet_from_cart_to_wishlist_cron">
+        <job name="visionet_from_cart_to_wishlist" instance="Visionet\AbandonedCart\Model\AddProductToWishlist" method="carttowishlist">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>   
+
+   
+</config>

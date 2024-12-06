@@ -1,0 +1,15 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Visionet\AbandonedCart\Helper\Data $helper */
+?>
+<?php $helper = $this->helper(\Visionet\AbandonedCart\Helper\Data::class); ?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Visionet_AbandonedCart/js/emailCapture":{
+            "type":"checkout",
+            "url":"<?= $block->escapeHtml($helper->getEmailCaptureUrl()); ?>"
+        }
+    }
+}
+</script>

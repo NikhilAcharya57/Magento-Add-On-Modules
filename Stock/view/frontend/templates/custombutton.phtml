@@ -1,0 +1,23 @@
+<?php 
+
+$blockObj= $block->getLayout()->createBlock('Visionet\Stock\Block\Index');
+
+$currentProduct = $blockObj->getCurrentProduct();
+$productId=$currentProduct->getId();
+$sku=$currentProduct->getSku();
+$saleqty=$blockObj->getSalableQtyBySku($sku);
+$qty=$saleqty[0]['qty'];
+
+$customer=$blockObj->getCustomer();
+//print_r($customer);
+
+?>
+<?php if($qty==0): ?>
+
+<form method="POST" enctype="multipart/form-data" action="<?= $blockObj->storeData(); ?>">
+  <input type="email" name="email" id="email" placeholder="Enter your email here">
+  <input type="submit" value="Send email">
+  <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+</form>
+
+<?php endif; ?>

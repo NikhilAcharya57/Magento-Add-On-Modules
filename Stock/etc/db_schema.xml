@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**  
+* To maintain the database structure(visionet_stock_table) for a module
+* @category: PHP
+* @package: Visionet/Stock
+* @copyright: Visionet Systems Limited. All rights reserved.
+* @license: Visionet Systems Limited
+* @author: Brina <Brina.Celvin@visionetsystems.com>
+* @keywords: Module Visionet_Stock
+*/
+-->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="visionet_stock" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="customer_id" nullable="false"/>
+        <column xsi:type="varchar" name="customer_name" nullable="false" length="30"/>
+       <column xsi:type="varchar" name="email" nullable="false" length="30"/>
+        <column xsi:type="int" name="product_id" nullable="false"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="30"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

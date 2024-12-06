@@ -1,0 +1,13 @@
+<?php
+$customerId = 1; //CUSTOMER_ID
+$wishlistCollection = $block->getWishlistByCustomerId($customerId);
+if(count($wishlistCollection)) {
+    foreach ($wishlistCollection as $_item) {
+        echo $_item->getProduct()->getName();echo "<br>";
+        echo $_item->getProduct()->getId();echo "<br>";
+        
+
+    }
+} else {
+    echo __("No Item found in your wishlist");
+}

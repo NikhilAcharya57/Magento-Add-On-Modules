@@ -1,0 +1,10 @@
+<config 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="abandonedcart_item1"
+              label="Cart Item "
+              file="cart_item.html"
+              type="html"
+              module="Visionet_Test"
+              area="frontend"
+    />
+</config>
