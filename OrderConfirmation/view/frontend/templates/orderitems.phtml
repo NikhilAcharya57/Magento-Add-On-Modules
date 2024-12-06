@@ -1,0 +1,35 @@
+<?php
+
+?>
+<?php 
+$blockObj= $block->getLayout()->createBlock('Visionet\OrderConfirmation\Block\Order\OrderConfirm');
+$order = $blockObj->getCurrentOrder();
+
+
+?>
+<?php if ($order) : ?>
+    <?php $_items = $order->getData(); ?>
+    <table class="items" style="width:100%;">
+
+      
+        <tbody>
+        <?php foreach($order as $items): ?>
+        
+            <?php $item=$items->getData(); 
+                  $productId = $item['product_id'];
+                  $image=$blockObj->getProductImage($productId);
+            ?>
+            <tr>
+                <td class="data image"  style="padding:10px;"><img src="<?php echo $image; ?>" style="width:150px;height:100px;" alt="<?php echo $item['sku']; ?>"></td>
+
+                <td class="data info" style="padding:10px;">  
+                    <div><?php echo $item['sku']; ?></div>
+                    <div>Qty : <?php echo $item['qty']; ?></div>
+                    <div style="color:rgb(150,7,200);font-weight: bold;">Rs.<?php echo $item['base_row_total']; ?></div>
+                </td>  
+            </tr>
+          
+        <?php endforeach; ?>
+        </tbody>
+    </table> 
+<?php endif; ?>

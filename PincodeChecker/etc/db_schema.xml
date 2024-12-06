@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="pincode_checker" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="varchar" name="country" nullable="false" length="50"/>
+        <column xsi:type="varchar" name="state" nullable="false" length="50"/>
+        <column xsi:type="int" name="frompincode" nullable="false"/>
+        <column xsi:type="int" name="topincode" nullable="false" />
+        <column xsi:type="int" name="no_of_days" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

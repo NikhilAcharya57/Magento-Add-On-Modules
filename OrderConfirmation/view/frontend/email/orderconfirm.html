@@ -1,0 +1,106 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Your %store_name order confirmation" store_name=$store.frontend_name}} @-->
+<!--@vars {
+"var formattedBillingAddress|raw":"Billing Address",
+"var order_data.email_customer_note|escape|nl2br":"Email Order Note",
+"var order.increment_id":"Order Id",
+"layout handle=\"sales_email_order_items\" order=$order area=\"frontend\"":"Order Items Grid",
+"var payment_html|raw":"Payment Details",
+"var formattedShippingAddress|raw":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"var shipping_msg":"Shipping message",
+"var created_at_formatted":"Order Created At (datetime)",
+"var store.frontend_name":"Store Frontend Name",
+"var store_phone":"Store Phone",
+"var store_email":"Store Email",
+"var store_hours":"Store Hours",
+"var this.getUrl($store,'customer/account/',[_nosid:1])":"Customer Account URL",
+"var order_data.is_not_virtual":"Order Type",
+"var order":"Order",
+"var order_id": "Order DB Id",
+"var order_data.customer_name":"Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<div class="header" style="background-color: rgba(204,170,244,0.5); text-align: center;">
+    <h1 class="thanks" style="color:rgb(150,7,200);">THANKS FOR YOUR ORDER</h1>
+    <p style="color:rgb(150,7,200);">Your order <span style="font-weight: bold;">#{{var order.increment_id}}</span></p>
+  
+
+    <p class="info" style="color:rgb(150,7,200);">Hey <span style="font-weight: bold;">{{var order_data.customer_name}},</span> we've got your order! Your world is about to look a whole lot better soon. We'll send you another email when your order ships.</p>
+
+    <div class="name" style="color:rgb(150,7,200);font-weight: bold;">- {{var store.frontend_name}}</div>
+    <br>
+
+</div>
+<br>
+<p style="color:rgb(150,7,200);font-weight: bold;font-size: 15px;">Order Summery</p>
+<hr>
+<div>
+{{layout handle="sales_order_confirmation" order_id=$order_id area="frontend"}}
+</div>
+
+<br>
+<div>
+{{layout handle="sales_order_totals" order_id=$order_id area="frontend"}}
+</div>
+
+<table style="width:100%; background-color: aliceblue;padding: 20px;">
+    <tr style="width:50%;">
+        <th style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+            {{trans "Billing Info"}}
+        </th>
+        <th style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+            {{trans "Shipping Info"}}
+        </th>
+    </tr>
+
+    <tr style="width:50%;">
+        <td style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">{{var formattedBillingAddress | raw }}
+        </td>
+        <td style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">{{var formattedShippingAddress | raw }}
+        </td>
+    </tr>
+</table> 
+
+<br>
+
+<table style="width: 100%;background-color: beige;padding: 20px;">
+    <tr>
+        <th style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+            {{trans "Payment method"}}
+        </th>
+        <th style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+           {{trans "Shipping Method"}}
+        </th>
+    </tr>
+
+    <tr>
+        <td style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+            <div style="font-weight: normal;color: rgb(211, 92, 255);">{{var payment_html | raw }}</div>
+        </td>
+        <td style="padding: 10px;border:1px solid rgb(5, 10, 15);width: 50%;">
+            <div style="font-weight: bold;color: rgb(211, 92, 255);">{{var order.shipping_description| raw }}</div>
+            <div>{{var shipping_msg | raw}}</div>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+{{layout handle="sales_order_related_product" order_id=$order_id area="frontend"}}
+
+<hr>
+
+<div style="background-color: rgba(204,170,244,0.5); text-align: center;">
+    <p style="padding: 5px;font-size: 10px;">You've received this email because you are subscriber to <a href="">{{var store.frontend_name}}</a>.If you feel you received it by mistake or wish to unsubscribe <a href="">click here</a></p>
+</div>
+
+
+{{template config_path="design/email/footer_template"}}

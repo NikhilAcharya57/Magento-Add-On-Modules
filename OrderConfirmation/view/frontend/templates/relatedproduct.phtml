@@ -1,0 +1,33 @@
+<?php 
+$blockObj= $block->getLayout()->createBlock('Visionet\OrderConfirmation\Block\Order\RelatedProduct');
+$relatedProductId = $blockObj->getRelatedProduct();
+
+?>
+<?php if($relatedProductId!=NULL):?>
+    <h3 style="color:rgb(150,7,200);font-weight:bold;">YOU'LL ALSO LOVE</h3>
+    <hr>
+    <?php foreach($relatedProductId as $productId): ?>
+       
+        <?php 
+            
+            $blockObj1= $block->getLayout()->createBlock('Visionet\OrderConfirmation\Block\Order\OrderConfirm');
+            $blockObj2= $block->getLayout()->createBlock('Visionet\OrderConfirmation\Block\Order\RelatedProduct');
+            $productImage = $blockObj1->getProductImage($productId);
+            $productName=$blockObj2->getProductName($productId);
+        ?> 
+
+        <span class="related-main-block" style="display:inline-block;">
+            
+            <div class="related-inner-block" style="background-color:rgba(204,170,244,0.5);margin:15px;">
+                <div style="padding:15px;text-align:center">
+                    <a href="<?php echo $blockObj2->redirectPDP($productId); ?>" style="font-style:none;color:black;">
+                        <div><img src="<?php echo $productImage; ?>" style="width:120px;height:80px;" alt="<?php echo $productName; ?>"></div>
+                    </a>     
+                    <div><?php echo $productName; ?></div>
+                </div>
+            </div>
+        </span>
+       
+
+    <?php endforeach; ?>
+<?php endif; ?>

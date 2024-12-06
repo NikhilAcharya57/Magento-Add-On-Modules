@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template area="frontend" file="orderconfirm.html" id="orderconfirm_general_customer_email_sender" label="Order Confirmationation Email" module="Visionet_OrderConfirmation" type="html"/>
+</config>

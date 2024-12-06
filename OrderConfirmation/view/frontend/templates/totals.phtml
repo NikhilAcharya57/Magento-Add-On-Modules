@@ -1,0 +1,35 @@
+<?php
+
+$blockObj= $block->getLayout()->createBlock('Visionet\OrderConfirmation\Block\Order\Totals');
+$subTotal = $blockObj->getSubTotals();
+$shippingCharge=$blockObj->getShippingCharge();
+$discountData=$blockObj->getDiscountInfo();
+$grandTotal=$subTotal+$shippingCharge+$discountData[1];
+?>
+
+
+<div>
+    <div style="background-color:rgb(248, 231, 255);padding:20px;">
+  
+
+    <table style="font-size:15px;">
+        <tr>
+            <th>Sub Totals</th>
+            <td><?php echo $subTotal; ?></td>
+        </tr>
+        <tr>
+            <th>Shipping Charge</th>
+            <td><?php echo $shippingCharge; ?></td>
+        </tr>
+        <tr>
+            <th>Discounts</th>
+            <td><?php echo $discountData[1]." [".$discountData[0]."]"; ?></td>
+        </tr>
+    </table>
+    <h2 style="color:rgb(150,7,200)">Grand Total</h2>
+
+    <h1 style="color:rgb(150,7,200);font-weight: bold;"><?php echo "Rs. ".$grandTotal; ?></h1>
+
+</div>
+<div>
+<br>

@@ -1,0 +1,38 @@
+<?php 
+
+/**  
+* @category: PHP
+* @package: Visionet/Pincode
+* @copyright: Visionet Systems Limited. All rights reserved.
+* @license: Visionet Systems Limited
+* @author: Nikhil A <nikhil.a@visionetsystems.com>
+* @keywords: Module Visionet_Pincode
+*/
+
+$helper = $this->helper('Visionet\Pincode\Helper\Data'); 
+$blockObj= $block->getLayout()->createBlock('Visionet\Pincode\Block\Index');
+
+?>
+
+<?php if($helper->isEnable()) :?>
+
+    <hr>
+    <form><b><p>Check availability of your product</p><b></form>
+    <?php 
+    ?>
+
+    <form name="main" method="POST" enctype="multipart/form-data" action="<?php $data=$blockObj->getPincode(); ?>">
+        <input type="number" name="pincode" id="pincode" placeholder="Enter your pincode here" maxlength="6"> 
+        <span id="btn"><button id="submit" name="submit" onClick="CheckIndianZipCode(pincode.value)">Submit</button></span>
+        <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+    </form>
+    
+    <br>
+    <?php if($data!=NULL ) : ?>  
+        <p id="true" class="message"><?php   print_r("You are getting product within ".$data." days");?> </p>
+    <?php else: ?>
+        <p id="false" class="message"><?php  print_r("Product not available for this pincode...!");  ?> </p>  
+    <?php endif; ?>
+        
+    <hr>
+<?php endif; ?>

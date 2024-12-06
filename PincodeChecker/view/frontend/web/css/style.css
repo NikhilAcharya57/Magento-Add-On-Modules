@@ -1,0 +1,38 @@
+#pincode{
+    width:250px; 
+}
+
+#submit{
+    width:100px;
+    height:33px;
+    background:rgb(0,0,255);
+    /* font-weight:bold; */
+    color:white;
+    font-size:20px;
+    border-radius: 3px;
+    border:none;
+    padding: auto;
+
+
+}
+
+#btn{
+    padding: 5px;
+}
+
+#submit:hover{
+    background-color:crimson;
+}
+
+#message{
+    color:rgb(255,0,0);
+    font-size:15px;
+}
+
+#true{
+    color:darkgreen;
+}
+
+#false{
+    color:red;
+}
